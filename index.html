@@ -3,51 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>When 'Premium Protection' Doesn't Protect - Norton 360 Complaints</title>
+    <title>Premium Protection That Actually Protects | Norton 360 Concerns</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Reset and base styles */
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #dc2626;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --transition: all 0.3s ease;
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
         
         body {
             line-height: 1.6;
-            color: #333;
-            background-color: #f9f9f9;
+            color: var(--dark);
+            background-color: var(--light);
+            scroll-behavior: smooth;
         }
         
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px 0;
+            padding: 0 20px;
         }
         
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #1a2a57 0%, #2c3e6e 100%);
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 80px 0;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
             text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .hero h1 {
-            font-size: 2.5rem;
+        h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            font-weight: 700;
-            line-height: 1.2;
+            font-weight: 800;
+            line-height: 1.1;
         }
         
-        .hero p {
-            font-size: 1.2rem;
+        .tagline {
+            font-size: 1.4rem;
             margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
             opacity: 0.9;
+            font-weight: 300;
         }
         
         .cta-buttons {
@@ -55,171 +84,267 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
         
         .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #e74c3c;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            background-color: var(--accent);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             border: none;
             cursor: pointer;
             font-size: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .btn:hover {
-            background-color: #c0392b;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #b91c1c;
         }
         
-        .btn-secondary {
+        .btn-outline {
             background-color: transparent;
             border: 2px solid white;
         }
         
-        .btn-secondary:hover {
-            background-color: rgba(255,255,255,0.1);
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
         
         /* Section Styles */
         section {
-            padding: 60px 0;
-        }
-        
-        section:nth-child(even) {
-            background-color: white;
+            padding: 80px 0;
         }
         
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 30px;
-            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
             text-align: center;
+            font-weight: 700;
         }
         
-        .concern-list {
-            list-style: none;
-            max-width: 800px;
-            margin: 0 auto;
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
         }
         
-        .concern-list li {
-            padding: 15px 0 15px 40px;
-            position: relative;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+        /* Concerns Section */
+        .concerns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
         
-        .concern-list li:before {
-            content: "!";
-            position: absolute;
-            left: 0;
-            top: 15px;
-            width: 25px;
-            height: 25px;
-            background-color: #e74c3c;
+        .concern-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .concern-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .concern-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        .concern-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        /* Problem Context */
+        .problem-context {
+            background: var(--dark);
             color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
         }
         
-        .problem-context, .standards {
+        .problem-context .section-title {
+            color: white;
+        }
+        
+        .context-content {
             max-width: 800px;
             margin: 0 auto;
-            font-size: 1.1rem;
+            text-align: center;
+            font-size: 1.2rem;
             line-height: 1.8;
         }
         
-        .standards-list {
-            list-style-type: none;
-            margin-top: 20px;
+        .highlight {
+            background: linear-gradient(120deg, transparent 0%, transparent 50%, rgba(220, 38, 38, 0.2) 50%, rgba(220, 38, 38, 0.2) 100%);
+            background-size: 220% 100%;
+            background-position: 100% 0;
+            transition: background-position 0.5s ease;
+            padding: 0 5px;
+            border-radius: 3px;
         }
         
-        .standards-list li {
-            padding: 10px 0 10px 40px;
-            position: relative;
-            margin-bottom: 15px;
+        .highlight:hover {
+            background-position: 0 0;
         }
         
-        .standards-list li:before {
-            content: "✓";
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 25px;
-            height: 25px;
-            background-color: #2ecc71;
+        /* Standards Section */
+        .standards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .standard-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .standard-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .standard-icon {
+            background: var(--primary);
             color: white;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
         }
         
-        .call-to-action {
-            text-align: center;
-        }
-        
+        /* Call to Action */
         .action-steps {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin: 40px 0;
+            margin: 50px 0;
         }
         
         .step {
-            flex: 1;
-            min-width: 250px;
-            max-width: 300px;
-            padding: 25px;
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
         .step-icon {
             font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #3498db;
+            margin-bottom: 20px;
+            color: var(--primary);
         }
         
         .step h3 {
-            margin-bottom: 10px;
-            color: #2c3e50;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .step p {
+            color: var(--gray);
+        }
+        
+        .cta-final {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
         
         /* Footer */
         footer {
-            background-color: #2c3e50;
+            background: var(--dark);
             color: white;
+            padding: 50px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: #93c5fd;
+        }
+        
+        .copyright {
             text-align: center;
-            padding: 30px 0;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         /* Responsive adjustments */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
+            h1 {
+                font-size: 2.2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
+            .tagline {
+                font-size: 1.2rem;
             }
             
             .section-title {
-                font-size: 1.7rem;
+                font-size: 2rem;
             }
             
             .cta-buttons {
@@ -230,49 +355,81 @@
             .btn {
                 width: 100%;
                 max-width: 300px;
+                justify-content: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
                 text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <header class="hero">
+    <!-- Header / Hero Section -->
+    <header>
         <div class="container">
-            <h1>When 'Premium Protection' Doesn't Protect</h1>
-            <p>Norton 360 Deluxe promised reliability. It's time we ask for more.</p>
-            <div class="cta-buttons">
-                <a href="#action" class="btn">See What You Deserve</a>
-                <a href="#action" class="btn btn-secondary">Demand real support</a>
+            <div class="header-content">
+                <h1>When "Premium Protection" Leaves You Exposed</h1>
+                <p class="tagline">Norton 360 promised peace of mind. But what happens when the shield has cracks?</p>
+                <div class="cta-buttons">
+                    <a href="#standards" class="btn">
+                        <i class="fas fa-shield-alt"></i> See What You Deserve
+                    </a>
+                    <a href="#action" class="btn btn-outline">
+                        <i class="fas fa-bullhorn"></i> Demand Real Protection
+                    </a>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- Shared Concern Section -->
-    <section id="concern">
+    <!-- Shared Concerns Section -->
+    <section id="concerns">
         <div class="container">
-            <h2 class="section-title">You paid for security. You expect your data, privacy, and peace of mind to be respected.</h2>
-            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">And yet, you've noticed:</p>
+            <h2 class="section-title">You Paid for Security. What Did You Actually Get?</h2>
+            <p class="section-subtitle">When premium software feels more like a liability than protection, it's time to ask questions.</p>
             
-            <ul class="concern-list">
-                <li>Updates that introduce new problems, not fixes</li>
-                <li>Support that deflects rather than resolves</li>
-                <li>Features sold as promises, but rarely backed by substance</li>
-            </ul>
+            <div class="concerns-grid">
+                <div class="concern-card">
+                    <div class="concern-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Updates That Break More Than They Fix</h3>
+                    <p>Instead of solving problems, new updates often introduce fresh issues, leaving you more vulnerable than before.</p>
+                </div>
+                
+                <div class="concern-card">
+                    <div class="concern-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Support That Runs in Circles</h3>
+                    <p>Scripted responses and deflection tactics instead of actual solutions to your security concerns.</p>
+                </div>
+                
+                <div class="concern-card">
+                    <div class="concern-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Features That Look Good on Paper</h3>
+                    <p>Promises of advanced protection that don't translate to real-world security when you need it most.</p>
+                </div>
+            </div>
             
-            <p style="text-align: center; margin-top: 30px; font-size: 1.2rem; font-weight: 600;">
-                These aren't isolated frustrations. They reflect a trust gap.
+            <p style="text-align: center; margin-top: 40px; font-size: 1.2rem; font-weight: 600; color: var(--accent);">
+                This isn't just bad luck—it's a pattern that needs addressing.
             </p>
         </div>
     </section>
 
     <!-- Problem In Context Section -->
-    <section id="context">
+    <section class="problem-context">
         <div class="container">
-            <h2 class="section-title">The Problem In Context</h2>
-            <div class="problem-context">
-                <p>Large companies, powerful brands—they set expectations. When they fail to deliver basic assurances — functional software, competent support, transparent policy — the fallout is real. Time lost, data exposed, faith eroded.</p>
-                <p style="margin-top: 20px; font-weight: 600;">People shouldn't accept "it's how it works" when they've paid for "it works well."</p>
+            <h2 class="section-title">The Real Cost of Broken Promises</h2>
+            <div class="context-content">
+                <p>When security software fails, it's not just an inconvenience. It's your <span class="highlight">personal data</span>, your <span class="highlight">privacy</span>, and your <span class="highlight">peace of mind</span> on the line.</p>
+                <p style="margin-top: 30px;">Big brands set high expectations. When they deliver anything less than solid protection, the fallout is real.</p>
+                <p style="margin-top: 30px; font-weight: 600;">You shouldn't have to accept "that's just how it is" when you paid for "it just works."</p>
             </div>
         </div>
     </section>
@@ -280,55 +437,151 @@
     <!-- Standards Section -->
     <section id="standards">
         <div class="container">
-            <h2 class="section-title">What We Believe Should Be Standard</h2>
-            <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">Here's what fairness looks like:</p>
+            <h2 class="section-title">What Security Should Actually Look Like</h2>
+            <p class="section-subtitle">It's time to raise the bar for what we expect from protection software.</p>
             
-            <ul class="standards-list">
-                <li><strong>Clear accountability</strong> — public acknowledgement when things go wrong.</li>
-                <li><strong>Reliable support</strong> — not just scripts, but real resolution.</li>
-                <li><strong>Transparent policies</strong> — no hidden clauses, no vague promises.</li>
-                <li><strong>Options for redress</strong> — refunds, fixes, or alternatives when the product fails to protect.</li>
-            </ul>
+            <div class="standards-container">
+                <div class="standard-item">
+                    <div class="standard-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h3>Clear Accountability</h3>
+                        <p>When things go wrong, companies should own it—not hide behind fine print.</p>
+                    </div>
+                </div>
+                
+                <div class="standard-item">
+                    <div class="standard-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div>
+                        <h3>Actual Support</h3>
+                        <p>Real people solving real problems, not reading from scripts.</p>
+                    </div>
+                </div>
+                
+                <div class="standard-item">
+                    <div class="standard-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div>
+                        <h3>No Fine Print Surprises</h3>
+                        <p>Transparent policies that protect you, not the company's liabilities.</p>
+                    </div>
+                </div>
+                
+                <div class="standard-item">
+                    <div class="standard-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div>
+                        <h3>Real Recourse</h3>
+                        <p>If the product fails, you deserve fixes, refunds, or alternatives.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Call to Action Section -->
-    <section id="action" class="call-to-action">
+    <section id="action" style="background-color: #f1f5f9;">
         <div class="container">
-            <h2 class="section-title">We don't need to get loud to make change happen. Together, we can ask for better.</h2>
+            <h2 class="section-title">Your Voice Matters</h2>
+            <p class="section-subtitle">Change happens when enough people speak up. Here's how you can help raise the standard.</p>
             
             <div class="action-steps">
                 <div class="step">
-                    <div class="step-icon">📢</div>
-                    <h3>Share your story</h3>
-                    <p>Each voice adds pressure. Document your experiences with Norton 360.</p>
+                    <div class="step-icon">
+                        <i class="fas fa-comment-dots"></i>
+                    </div>
+                    <h3>Share Your Story</h3>
+                    <p>Your experience adds weight to the conversation. Detail what worked and what didn't.</p>
                 </div>
                 
                 <div class="step">
-                    <div class="step-icon">🌐</div>
-                    <h3>Spread the conversation</h3>
-                    <p>Among friends, on forums, social media. Raise awareness about these issues.</p>
+                    <div class="step-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Spread the Word</h3>
+                    <p>Talk about it with friends, on forums, social media. Awareness creates pressure for change.</p>
                 </div>
                 
                 <div class="step">
-                    <div class="step-icon">📝</div>
-                    <h3>Contact Norton with specifics</h3>
-                    <p>What failed, what you expected, how you were let down. Be detailed and persistent.</p>
+                    <div class="step-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>Contact Norton Directly</h3>
+                    <p>Be specific about what failed, what you expected, and how you were let down.</p>
                 </div>
             </div>
             
-            <p style="margin: 30px 0; font-size: 1.2rem; font-weight: 600;">Insist on your rights. You bought a product. You deserve what was promised.</p>
-            
-            <a href="#" class="btn">Stand for Better</a>
+            <div class="cta-final">
+                <p style="font-size: 1.3rem; margin-bottom: 20px; font-weight: 600;">You invested in protection. You deserve to actually feel protected.</p>
+                <a href="#" class="btn">
+                    <i class="fas fa-fist-raised"></i> Stand For Better Protection
+                </a>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>This page is created by concerned consumers to advocate for better software standards and customer service.</p>
-            <p style="margin-top: 10px;">© 2023 Consumer Advocacy Initiative</p>
+            <div class="footer-content">
+                <div class="footer-logo">Security Matters</div>
+                <div class="footer-links">
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy</a>
+                    <a href="#">Terms</a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>This is an independent advocacy initiative. We are not affiliated with Norton or its parent company.</p>
+                <p style="margin-top: 10px;">© 2023 Security Matters. All rights reserved.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            // Animate cards and steps
+            const cards = document.querySelectorAll('.concern-card, .standard-item, .step');
+            cards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Highlight effect for the problem context section
+            const highlights = document.querySelectorAll('.highlight');
+            highlights.forEach(highlight => {
+                highlight.addEventListener('mouseenter', function() {
+                    this.style.backgroundPosition = '0 0';
+                });
+                
+                highlight.addEventListener('mouseleave', function() {
+                    this.style.backgroundPosition = '100% 0';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
